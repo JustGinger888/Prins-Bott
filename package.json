@@ -1,0 +1,8 @@
+{
+“name”: “prins-bott”,
+“version”: “1.0.0”,
+“description”: “In charge of greetings and providing reminders of activities, such as hackathons and comp soc meetings”,
+“main”: “bot.js”,
+“author”: “JustGinger888”,
+“dependencies”: {}
+}
