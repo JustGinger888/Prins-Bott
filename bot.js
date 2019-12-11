@@ -12,7 +12,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         var cmd = args[0];
        
         args = args.splice(1);
-        switch(cmd) {
+        switch(ping) {
             // !ping
             case 'ping':
                 bot.sendMessage({
