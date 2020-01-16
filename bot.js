@@ -64,6 +64,12 @@ bot.on("message", async message => {
         // Limiting kick to "admin" role through hardcoding role names
         if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
         return message.reply("Sorry, you don't have permissions to use this!");
+        
+        // Validates the kicking of a memebr by checking for their existance 
+        let member = message.mentions.members.first() || message.guild.members.get(args[0]);
+        if(!member) return message.reply("Please mention a valid server member");
+        if(!member.kickable) return message.reply("Unable to kick mentioned user");
+        
     }
 });
 
