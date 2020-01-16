@@ -57,7 +57,14 @@ bot.on("message", async message => {
         // Bot responds to say message
         message.channel.send(sayMessage);
     }
-  
+    
+
+    // Kick users from server
+    if(command === "kick") {
+        // Limiting kick to "admin" role through hardcoding role names
+        if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+        return message.reply("Sorry, you don't have permissions to use this!");
+    }
 });
 
 bot.login(config.token);
