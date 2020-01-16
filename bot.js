@@ -39,7 +39,13 @@ bot.on("message", async message => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     
-
+    
+    if(command === "ping") {
+        // Calculating round-trip latency
+        const m = await message.channel.send("Ping?");
+        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+    }
+    
 });
 
 bot.login(config.token);
