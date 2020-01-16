@@ -39,11 +39,23 @@ bot.on("message", async message => {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
     
-    
+
+    // Basic Ping-Pong Command to check usability
     if(command === "ping") {
         // Calculating round-trip latency
         const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+    }
+    
+
+    // Making the bot say something and delete the  users message
+    if(command === "say") {
+        // Joining the ARGS back into a string with spaces 
+        const sayMessage = args.join(" ");
+        // Deleting the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
+        message.delete().catch(O_o=>{}); 
+        // And we get the bot to say the thing: 
+        message.channel.send(sayMessage);
     }
     
 });
