@@ -70,7 +70,17 @@ bot.on("message", async message => {
         if(!member) return message.reply("Please mention a valid server member");
         if(!member.kickable) return message.reply("Unable to kick mentioned user");
         
+        // The reason for their kick
+        let reason = args.slice(1).join(' ');
+        if(!reason) reason = "No reason provided";
+        
+        // Actual removal of user 
+        await member.kick(reason)
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
+        message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+
     }
+    
 });
 
 bot.login(config.token);
