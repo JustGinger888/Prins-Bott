@@ -1,0 +1,8 @@
+{
+“name” Prins-Bott”,
+“version” “1.0.0”,
+“description” “Multi-purpose discord bot for Computing Discord”,
+“main” “bot.js”,
+“author” “JustGinger888”,
+“dependencies” {}
+}

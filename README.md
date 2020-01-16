@@ -1,2 +1,2 @@
 # Prins-Bott
-First ever Discord Bot
+Solent Computing Discord bot
