@@ -52,12 +52,12 @@ bot.on("message", async message => {
     if(command === "say") {
         // Joining the ARGS back into a string with spaces 
         const sayMessage = args.join(" ");
-        // Deleting the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
-        message.delete().catch(O_o=>{}); 
-        // And we get the bot to say the thing: 
+        // Deleting the users command
+        message.delete().catch(vanish_=>{}); 
+        // Bot responds to say message
         message.channel.send(sayMessage);
     }
-    
+  
 });
 
 bot.login(config.token);
