@@ -50,25 +50,31 @@ bot.on("message", async message => {
 
     // Help command to display avalible 
     if(command === "help") {
-        const sayMessage = 
-        "!say\nMake Prins-Bott say anything you want\n" +
-        "!purge\nDeletes a number of messages in a channel\n"+
-        "!mute\nMutes a user in the server\n" +
-        "!unmute\nUnmutes a user in the server\n"+
-        "kick\nKicks a User from the Server\n"+
-        "ban\nBans a User from the Server\n"+
-        "!softban\nSoft Bans a User from the Server. Removes their messages from chat and kicks them\n"
-        "!suggest\nAllows a user to make a suggestion\n" +
-        "!invite\nGenerates the invite link for the bot and posts it in the server\n" +
-        "!ping\nGets the Ping of the Server and Bot\n"+
-        "!youtube\nSearch for YouTube videos\n" +
-        "!urban\nSearch for definitions on Urban Dictionary\n" +
-        "!imgur\nSearch for pictures and memes on imgur\n" +
-        "!giphy\nSearch your Gifs on Giphy\n" +
-        "!weather\nGets the current weather forecast for Southampton\n" +
-        "!translate\nTranslates text from a detected language into a target language. e.g !translate french Hello There";
+        //defining embeded Help
+        const embed = new Discord.RichEmbed()
+        .setDescription('The list of commands currently implemented.')
+        .addField('!say', 'Make Prins-Bott say anything you want.', true)
+        .addField('!purge', 'Deletes a number of messages in a channel.',true)
+        .addField('!mute', 'Mutes a specified user in the server.',true)
+        .addField('!unmute', 'Unmutes a specified user in the server.', true)
+        .addField('!kick', 'Kick a specified User from the Server.', true)
+        .addField('!ban', 'Ban a specified User from the Server.', true)
+        .addField('!softban', 'Soft Bans a User from the Server by removing their messages and kicks them.', true)
+        .addField('!suggest', 'Allows a user to make a suggestion, posted to suggestions channel.', true)
+        .addField('!invite', 'Generates an invite link which the bot then posts it in the server.', true)
+        .addField('!ping', 'Gets and displays the Ping of the Server and Bot.', true)
+        .addField('!youtube', 'Search for a video found on YouTube.', true)
+        .addField('!urban', 'Search for definitions on Urban Dictionary.', true)
+        .addField('!imgur', 'Search for pictures and memes on imgur.', true)
+        .addField('!giphy', 'Search for your desired Gifs using Giphy.', true)
+        .addField('!weather', 'Gets the current weather forecast for Southampton.', true)
+        .addField('!translate', 'Translates text from a detected language into a target language.', true)
+        .setFooter('Feel free to leave some command suggestions or add them yourself!')
+        .setColor(0x1ae6b3)
+        .setTitle("Prins-Bot Commands")
+        .setURL("https://github.com/JustGinger888/Prins-Bott");
         
-        message.channel.send(sayMessage);    
+        message.channel.send(embed);
     }
     
 
