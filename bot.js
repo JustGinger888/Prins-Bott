@@ -63,7 +63,7 @@ bot.on("message", async message => {
     if(command === "kick") {
         // Limiting kick to "admin" role through hardcoding role names
         if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-        return message.reply("Sorry, you don't have permissions to use this!");
+        return message.reply("You don't have permissions to use this!");
         
         // Validates the kicking of a memebr by checking for their existance 
         let member = message.mentions.members.first() || message.guild.members.get(args[0]);
@@ -80,6 +80,29 @@ bot.on("message", async message => {
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
     }
+    
+    // Ban is a permanent removal of user 
+    if(command === "ban") {
+        // Only admins can ban
+        if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
+        return message.reply("You don't have permissions to use this!");
+        
+        // Validates the ban of a memebr by checking for their existance 
+        let member = message.mentions.members.first();
+        if(!member) return message.reply("Please mention a valid server member");
+        if(!member.kickable) return message.reply("Unable to kick mentioned user");
+
+        // The reason for their ban
+        let reason = args.slice(1).join(' ');
+        if(!reason) reason = "No reason provided";
+        
+        // Actual removal of user 
+        await member.ban(reason)
+        .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
+        message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+    }
+
+    
     
 });
 
