@@ -6,6 +6,21 @@
   "author": "JustGinger888",
   "dependencies": {
     "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+    "discord.js": "^11.5.1",
     "winston": "^3.2.1"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustGinger888/Prins-Bott.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JustGinger888/Prins-Bott/issues"
+  },
+  "homepage": "https://github.com/JustGinger888/Prins-Bott#readme"
 }
