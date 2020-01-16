@@ -40,11 +40,35 @@ bot.on("message", async message => {
     const command = args.shift().toLowerCase();
     
 
-    // Basic Ping-Pong Command to check usability
+    // Basic Ping-Pong Command to check Ping
     if(command === "ping") {
         // Calculating round-trip latency
         const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+    }
+
+
+    // Help command to display avalible 
+    if(command === "help") {
+        const sayMessage = 
+        "!say\nMake Prins-Bott say anything you want\n" +
+        "!purge\nDeletes a number of messages in a channel\n"+
+        "!mute\nMutes a user in the server\n" +
+        "!unmute\nUnmutes a user in the server\n"+
+        "kick\nKicks a User from the Server\n"+
+        "ban\nBans a User from the Server\n"+
+        "!softban\nSoft Bans a User from the Server. Removes their messages from chat and kicks them\n"
+        "!suggest\nAllows a user to make a suggestion\n" +
+        "!invite\nGenerates the invite link for the bot and posts it in the server\n" +
+        "!ping\nGets the Ping of the Server and Bot\n"+
+        "!youtube\nSearch for YouTube videos\n" +
+        "!urban\nSearch for definitions on Urban Dictionary\n" +
+        "!imgur\nSearch for pictures and memes on imgur\n" +
+        "!giphy\nSearch your Gifs on Giphy\n" +
+        "!weather\nGets the current weather forecast for Southampton\n" +
+        "!translate\nTranslates text from a detected language into a target language. e.g !translate french Hello There";
+        
+        message.channel.send(sayMessage);    
     }
     
 
