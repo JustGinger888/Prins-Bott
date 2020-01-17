@@ -70,6 +70,7 @@ bot.on("message", async message => {
         
         message.channel.send(embed);
     }
+    //done
     
     // Lists events for Computing courses gotten from SOL
     if(command === "events") {}
@@ -89,6 +90,7 @@ bot.on("message", async message => {
         // Bot responds to say message
         message.channel.send(sayMessage);
     }
+    //done
     
     // Removes up to 100 messages from users in the channel
     if(command === "purge") {
@@ -105,6 +107,7 @@ bot.on("message", async message => {
         message.channel.bulkDelete(fetched)
         .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
     }
+    //done
 
     // Suggestions, can include improvements for society or commands to be added
     if(command === "suggest") {}
@@ -139,6 +142,7 @@ bot.on("message", async message => {
         message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
 
     }
+    //done
     
     // Ban is a permanent removal of user 
     if(command === "ban") {
@@ -160,6 +164,7 @@ bot.on("message", async message => {
         .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
+    //done
 
     // Semi permanent removal of user
     if(command === "softban") {}
@@ -176,6 +181,7 @@ bot.on("message", async message => {
         const m = await message.channel.send("Ping?");
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
     }
+    //done
 
     // Search for an image on iimgur
     if(command === "imgur") {}
