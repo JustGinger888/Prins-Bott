@@ -119,6 +119,7 @@ bot.on("message", async message => {
         channel.send(reply); 
         message.delete().catch(vanish_=>{}); 
     }
+    //done
 
     // Mute a user
     if(command === "mute") {
@@ -162,15 +163,38 @@ bot.on("message", async message => {
         
         // Notification
         await toMute.addRole(mutedRole)
-        .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't kick because of : ${error}`).setColor(0x1ae6b3)));
-        message.channel.send(embed.addField('Muted', `${toMute.user.tag} has been muted!`).setColor(0x1ae6b3));
-        
+        .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't mute because of : ${error}`).setColor(0x1ae6b3)));
+        message.channel.send(embed.addField('Muted', `${toMute.user.tag} has been muted!`).setColor(0x1ae6b3));   
     }
+    //done
 
     // Unmute a user
     if(command === "unmute") {
+
+        const embed = new Discord.RichEmbed();
+
+        // Checks
+        if(!message.member.roles.some(r=>["Admin"].includes(r.name))) return message.channel.send(embed.addField('ERROR', 'You do not have Permission to mute!').setColor(0x1ae6b3));
+        const toMute = message.mentions.members.first() || message.guild.members.get(args[0]);
+        if (!toMute) return message.channel.send(embed.addField('ERROR', 'You did not specify a user mention or ID!').setColor(0x1ae6b3));
+        if (toMute.id === message.author.id) return message.channel.send(embed.addField('ERROR', 'You can not mute yourself!').setColor(0x1ae6b3));
+        if (toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send(embed.addField('ERROR', 'You can not mute a member that is equal to or higher than yourself!').setColor(0x1ae6b3));
+
+        // Check if the user has the mutedRole
+        const mutedRole = message.guild.roles.find(mR => mR.name === 'Muted');
+
+        // If the mentioned user or ID does not have the "mutedRole" return a message
+        if (!mutedRole || !toMute.roles.has(mutedRole.id)) return message.channel.send(embed.addField('ERROR', 'This user is not muted!').setColor(0x1ae6b3));
+
+        // Remove the mentioned users role "mutedRole", "muted.json", and notify command sender
+        await toMute.removeRole(mutedRole)
+        .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't unmute because of : ${error}`).setColor(0x1ae6b3)));
+        message.channel.send(embed.addField('Muted', `${toMute.user.tag} has been unmuted!`).setColor(0x1ae6b3));
         
+        member.removeRole(mutedRole);
+        delete bot.muted[toMute.id];
     }
+    //done
 
     // Create invite link to share
     if(command === "invite") {}
