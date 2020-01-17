@@ -38,6 +38,7 @@ bot.on("message", async message => {
     // Separating cmd NAME and ARGS 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
+    
 
 
     // Help command to display avalible 
@@ -210,6 +211,8 @@ bot.on("message", async message => {
 
     // Kick users from server
     if(command === "kick") {
+        const embed = new Discord.RichEmbed()
+
         // Limiting kick to "admin" role through hardcoding role names
         if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
         return message.reply(embed.addField('ERROR', "You don't have permissions to use this!").setColor(0x1ae6b3));
@@ -234,6 +237,8 @@ bot.on("message", async message => {
 
     // Ban is a permanent removal of user 
     if(command === "ban") {
+        const embed = new Discord.RichEmbed()
+
         // Only admins can ban
         if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
         return message.reply(embed.addField('ERROR', "You don't have permissions to use this!").setColor(0x1ae6b3));
@@ -266,9 +271,10 @@ bot.on("message", async message => {
     
     // Basic Ping-Pong Command to check Ping
     if(command === "ping") {
+        const embed = new Discord.RichEmbed()
         // Calculating round-trip latency
         const m = await message.channel.send("Ping?");
-        m.edit(embed.addField('Pong!', `Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)).setColor(0x1ae6b3);
+        m.edit(embed.addField('Pong!', `Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`).setColor(0x1ae6b3));
     }
     //done
 
