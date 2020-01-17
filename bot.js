@@ -71,9 +71,13 @@ bot.on("message", async message => {
         message.channel.send(embed);
     }
     
-
+    // Lists events for Computing courses gotten from SOL
     if(command === "events") {}
+
+    // Lists society description, plans and events for the month
     if(command === "society") {}
+
+    // Translates detected text using google translate api
     if(command === "translate") {}
 
     // Making the bot say something and delete the  users message
@@ -102,9 +106,16 @@ bot.on("message", async message => {
         .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
     }
 
+    // Suggestions, can include improvements for society or commands to be added
     if(command === "suggest") {}
+
+    // Mute a user
     if(command === "mute") {}
+
+    // Unmute a user
     if(command === "unmute") {}
+
+    // Create invite link to share
     if(command === "invite") {}
 
     // Kick users from server
@@ -150,8 +161,13 @@ bot.on("message", async message => {
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
 
+    // Semi permanent removal of user
     if(command === "softban") {}
+
+    // Search for a youtube video
     if(command === "youtube") {}
+
+    // Search a definition on urban dictionary
     if(command === "urban") {}
     
     // Basic Ping-Pong Command to check Ping
@@ -161,8 +177,13 @@ bot.on("message", async message => {
         m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
     }
 
+    // Search for an image on iimgur
     if(command === "imgur") {}
+
+    // Search for a gif on giphy
     if(command === "giphy") {}
+
+    // Display weather of southampton
     if(command === "weather") {}
 
 });
