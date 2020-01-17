@@ -87,7 +87,7 @@ bot.on("message", async message => {
         const embed = new Discord.RichEmbed();
 
         // Joining the ARGS back into a string with spaces 
-        const sayMessage = embed.addField(`Suggestion from ${message.author.tag}:`, args.join(" ")).setColor(0x1ae6b3);
+        const sayMessage = embed.addField(`Message`, args.join(" ")).setColor(0x1ae6b3);
         // Deleting the users command
         message.delete().catch(vanish_=>{}); 
         // Bot responds to say message
@@ -98,7 +98,8 @@ bot.on("message", async message => {
 
     // Removes up to 100 messages from users in the channel
     if(command === "purge") {
-    
+        const embed = new Discord.RichEmbed();
+
         // Get delete count
         const deleteCount = parseInt(args[0], 10);
         
@@ -120,7 +121,7 @@ bot.on("message", async message => {
         const embed = new Discord.RichEmbed();
         
         //Sends the arguments to suggestion channel
-        const reply = embed.addField(`Suggestion from ${message.author.tag}:\n`, args.join(' ')).setColor(0x1ae6b3);
+        const reply = embed.addField(`Suggestion from ${message.author.tag}\n`, args.join(' ')).setColor(0x1ae6b3);
         channel.send(reply); 
         message.delete().catch(vanish_=>{}); 
     }
@@ -170,7 +171,7 @@ bot.on("message", async message => {
         // Notification
         await toMute.addRole(mutedRole)
         .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't mute because of : ${error}`).setColor(0x1ae6b3)));
-        message.channel.send(embed.addField('Muted', `${toMute.user.tag} has been muted!`).setColor(0x1ae6b3));   
+        message.channel.send(embed.addField('MUTED', `${toMute.user.tag} has been muted!`).setColor(0x1ae6b3));   
     }
     //done
 
@@ -196,7 +197,7 @@ bot.on("message", async message => {
         // Remove the mentioned users role "mutedRole", "muted.json", and notify command sender
         await toMute.removeRole(mutedRole)
         .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't unmute because of : ${error}`).setColor(0x1ae6b3)));
-        message.channel.send(embed.addField('Muted', `${toMute.user.tag} has been unmuted!`).setColor(0x1ae6b3));
+        message.channel.send(embed.addField('UNMUTED', `${toMute.user.tag} has been unmuted!`).setColor(0x1ae6b3));
         
         member.removeRole(mutedRole);
         delete bot.muted[toMute.id];
