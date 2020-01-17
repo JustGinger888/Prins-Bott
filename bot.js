@@ -51,8 +51,8 @@ bot.on("message", async message => {
         .addField('!say', 'Make Prins-Bott say anything you want.', true)
         .addField('!purge', 'Deletes # of messages in a channel.',true)
         .addField('!suggest', 'Allows a user to make a suggestion, posted to suggestions channel.', false)
-        .addField('!mute TBA', 'Mutes a specified user in the server.',true)
-        .addField('!unmute TBA', 'Unmutes a specified user in the server.', true)
+        .addField('!mute', 'Mutes a specified user in the server.',true)
+        .addField('!unmute', 'Unmutes a specified user in the server.', true)
         .addField('!invite TBA', 'Generates an invite link which the bot then posts it in the server.', false)
         .addField('!kick', 'Kick a specified User from the Server.', true)
         .addField('!ban', 'Ban a specified User from the Server.', true)
@@ -72,6 +72,7 @@ bot.on("message", async message => {
     }
     //done
     
+
     // Lists events for Computing courses gotten from SOL
     if(command === "events") {}
 
@@ -83,8 +84,10 @@ bot.on("message", async message => {
 
     // Making the bot say something and delete the  users message
     if(command === "say") {
+        const embed = new Discord.RichEmbed();
+
         // Joining the ARGS back into a string with spaces 
-        const sayMessage = args.join(" ");
+        const sayMessage = embed.addField(`Suggestion from ${message.author.tag}:`, args.join(" ")).setColor(0x1ae6b3);
         // Deleting the users command
         message.delete().catch(vanish_=>{}); 
         // Bot responds to say message
@@ -92,6 +95,7 @@ bot.on("message", async message => {
     }
     //done
     
+
     // Removes up to 100 messages from users in the channel
     if(command === "purge") {
     
@@ -100,14 +104,15 @@ bot.on("message", async message => {
         
         // Checking Lenghth
         if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-        return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+        return message.reply(embed.addField('ERROR', "Please provide a number between 2 and 100 for the number of messages to delete").setColor(0x1ae6b3));
         
         // Get messages and delete them
         const fetched = await message.channel.fetchMessages({limit: deleteCount});
         message.channel.bulkDelete(fetched)
-        .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+        .catch(error => message.reply(embed.addField('ERROR', `Couldn't delete messages because of: ${error}`).setColor(0x1ae6b3)));
     }
     //done
+
 
     // Suggestions, can include improvements for society or commands to be added
     if(command === "suggest") {
@@ -120,6 +125,7 @@ bot.on("message", async message => {
         message.delete().catch(vanish_=>{}); 
     }
     //done
+
 
     // Mute a user
     if(command === "mute") {
@@ -168,6 +174,7 @@ bot.on("message", async message => {
     }
     //done
 
+
     // Unmute a user
     if(command === "unmute") {
 
@@ -196,6 +203,7 @@ bot.on("message", async message => {
     }
     //done
 
+
     // Create invite link to share
     if(command === "invite") {}
 
@@ -203,12 +211,12 @@ bot.on("message", async message => {
     if(command === "kick") {
         // Limiting kick to "admin" role through hardcoding role names
         if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-        return message.reply("You don't have permissions to use this!");
+        return message.reply(embed.addField('ERROR', "You don't have permissions to use this!").setColor(0x1ae6b3));
         
         // Validates the kicking of a memebr by checking for their existance 
         let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-        if(!member) return message.reply("Please mention a valid server member");
-        if(!member.kickable) return message.reply("Unable to kick mentioned user");
+        if(!member) return message.reply(embed.addField('ERROR', "Please mention a valid server member").setColor(0x1ae6b3));
+        if(!member.kickable) return message.reply(embed.addField('ERROR', "Unable to kick mentioned user").setColor(0x1ae6b3));
         
         // The reason for their kick
         let reason = args.slice(1).join(' ');
@@ -216,22 +224,23 @@ bot.on("message", async message => {
         
         // Actual removal of user 
         await member.kick(reason)
-        .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-        message.reply(`${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`);
+        .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't kick because of : ${error}`).setColor(0x1ae6b3)));
+        message.reply(embed.addField('KICKED', `${member.user.tag} has been kicked by ${message.author.tag} because: ${reason}`).setColor(0x1ae6b3));
 
     }
     //done
     
+
     // Ban is a permanent removal of user 
     if(command === "ban") {
         // Only admins can ban
         if(!message.member.roles.some(r=>["Admin"].includes(r.name)) )
-        return message.reply("You don't have permissions to use this!");
+        return message.reply(embed.addField('ERROR', "You don't have permissions to use this!").setColor(0x1ae6b3));
         
         // Validates the ban of a memebr by checking for their existance 
         let member = message.mentions.members.first();
-        if(!member) return message.reply("Please mention a valid server member");
-        if(!member.kickable) return message.reply("Unable to kick mentioned user");
+        if(!member) return message.reply(embed.addField('ERROR', "Please mention a valid server member").setColor(0x1ae6b3));
+        if(!member.kickable) return message.reply(embed.addField('ERROR', "Unable to kick mentioned user").setColor(0x1ae6b3));
 
         // The reason for their ban
         let reason = args.slice(1).join(' ');
@@ -239,10 +248,11 @@ bot.on("message", async message => {
         
         // Actual removal of user 
         await member.ban(reason)
-        .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
-        message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
+        .catch(error => message.reply(embed.addField('ERROR', `Sorry ${message.author} I couldn't ban because of : ${error}`)).setColor(0x1ae6b3));
+        message.reply(embed.addField('BANNED', `${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`).setColor(0x1ae6b3));
     }
     //done
+
 
     // Semi permanent removal of user
     if(command === "softban") {}
@@ -257,10 +267,11 @@ bot.on("message", async message => {
     if(command === "ping") {
         // Calculating round-trip latency
         const m = await message.channel.send("Ping?");
-        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+        m.edit(embed.addField('Pong!', `Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`)).setColor(0x1ae6b3);
     }
     //done
 
+    
     // Search for an image on iimgur
     if(command === "imgur") {}
 
