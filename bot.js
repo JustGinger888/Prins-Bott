@@ -50,7 +50,7 @@ bot.on("message", async message => {
         .addField('!translate TBA', 'Translates text from a detected language into a target language.', false)
         .addField('!say', 'Make Prins-Bott say anything you want.', true)
         .addField('!purge', 'Deletes # of messages in a channel.',true)
-        .addField('!suggest TBA', 'Allows a user to make a suggestion, posted to suggestions channel.', false)
+        .addField('!suggest', 'Allows a user to make a suggestion, posted to suggestions channel.', false)
         .addField('!mute TBA', 'Mutes a specified user in the server.',true)
         .addField('!unmute TBA', 'Unmutes a specified user in the server.', true)
         .addField('!invite TBA', 'Generates an invite link which the bot then posts it in the server.', false)
@@ -110,7 +110,15 @@ bot.on("message", async message => {
     //done
 
     // Suggestions, can include improvements for society or commands to be added
-    if(command === "suggest") {}
+    if(command === "suggest") {
+        const channel = message.guild.channels.find(ch => ch.name === 'suggestions');  //finds the channel named suggestions 
+        const embed = new Discord.RichEmbed();
+        
+        //Sends the arguments to suggestion channel
+        const reply = embed.addField(`Suggestion from ${message.author.username}:\n`, args.join(' ')).setColor(0x1ae6b3);
+        channel.send(reply); 
+        message.delete().catch(vanish_=>{}); 
+    }
 
     // Mute a user
     if(command === "mute") {}
