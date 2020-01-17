@@ -121,10 +121,29 @@ bot.on("message", async message => {
     }
 
     // Mute a user
-    if(command === "mute") {}
+    if(command === "mute") {
+        // If the command is like: !mute <mention> <minutes> [reason]
+        exports.run = (client, message, [mention, minutes, ...reason]) => {
+            // This is the role you want to assign to the user
+            let mutedRole = message.guild.find(role => role.name == "Muted");
+
+            // This is the member you want to mute
+            let member = message.mentions.members.first();
+        
+            // Mute the user
+            member.addRole(mutedRole, `Muted by ${message.author.tag} for ${minutes} minutes. Reason: ${reason}`);
+        
+            // Unmute them after x minutes
+            setTimout(() => {
+            member.removeRole(mutedRole, `Temporary mute expired.`);
+            }, minutes * 1);
+        };
+    }
 
     // Unmute a user
-    if(command === "unmute") {}
+    if(command === "unmute") {
+        
+    }
 
     // Create invite link to share
     if(command === "invite") {}
