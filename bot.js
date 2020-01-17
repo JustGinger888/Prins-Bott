@@ -38,14 +38,6 @@ bot.on("message", async message => {
     // Separating cmd NAME and ARGS 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
-    
-
-    // Basic Ping-Pong Command to check Ping
-    if(command === "ping") {
-        // Calculating round-trip latency
-        const m = await message.channel.send("Ping?");
-        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
-    }
 
 
     // Help command to display avalible 
@@ -113,6 +105,7 @@ bot.on("message", async message => {
     if(command === "suggest") {}
     if(command === "mute") {}
     if(command === "unmute") {}
+    if(command === "invite") {}
 
     // Kick users from server
     if(command === "kick") {
@@ -156,6 +149,21 @@ bot.on("message", async message => {
         .catch(error => message.reply(`Sorry ${message.author} I couldn't ban because of : ${error}`));
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
+
+    if(command === "softban") {}
+    if(command === "youtube") {}
+    if(command === "urban") {}
+    
+    // Basic Ping-Pong Command to check Ping
+    if(command === "ping") {
+        // Calculating round-trip latency
+        const m = await message.channel.send("Ping?");
+        m.edit(`Pong! Latency is ${m.createdTimestamp - message.createdTimestamp}ms. API Latency is ${Math.round(bot.ping)}ms`);
+    }
+
+    if(command === "imgur") {}
+    if(command === "giphy") {}
+    if(command === "weather") {}
 
 });
 
