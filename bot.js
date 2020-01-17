@@ -52,23 +52,25 @@ bot.on("message", async message => {
     if(command === "help") {
         //defining embeded Help
         const embed = new Discord.RichEmbed()
-        .setDescription('The list of commands currently implemented.')
+        .setDescription('The list of commands (TO_BE) implemented.')
+        .addField('!events', 'Lists all of the upcoming events found on SOL Computing Channel.', true)
+        .addField('!society', 'Displays details about the Solent Computing Society schedule.', true)
+        .addField('!translate', 'Translates text from a detected language into a target language.', false)
         .addField('!say', 'Make Prins-Bott say anything you want.', true)
-        .addField('!purge', 'Deletes a number of messages in a channel.',true)
+        .addField('!purge', 'Deletes # of messages in a channel.',true)
+        .addField('!suggest', 'Allows a user to make a suggestion, posted to suggestions channel.', false)
         .addField('!mute', 'Mutes a specified user in the server.',true)
         .addField('!unmute', 'Unmutes a specified user in the server.', true)
+        .addField('!invite', 'Generates an invite link which the bot then posts it in the server.', false)
         .addField('!kick', 'Kick a specified User from the Server.', true)
         .addField('!ban', 'Ban a specified User from the Server.', true)
-        .addField('!softban', 'Soft Bans a User from the Server by removing their messages and kicks them.', true)
-        .addField('!suggest', 'Allows a user to make a suggestion, posted to suggestions channel.', true)
-        .addField('!invite', 'Generates an invite link which the bot then posts it in the server.', true)
-        .addField('!ping', 'Gets and displays the Ping of the Server and Bot.', true)
+        .addField('!softban', 'Soft Bans a User from the Server by removing their messages and kicks them.', false)
         .addField('!youtube', 'Search for a video found on YouTube.', true)
-        .addField('!urban', 'Search for definitions on Urban Dictionary.', true)
+        .addField('!urban', 'Search definitions on Urban Dictionary.', true)
+        .addField('!ping', 'Displays the Ping of both the Server and Bot and returns pong cause why not.', false)
         .addField('!imgur', 'Search for pictures and memes on imgur.', true)
         .addField('!giphy', 'Search for your desired Gifs using Giphy.', true)
-        .addField('!weather', 'Gets the current weather forecast for Southampton.', true)
-        .addField('!translate', 'Translates text from a detected language into a target language.', true)
+        .addField('!weather', 'Gets the weather forecast for Southampton and displays it in server.', false)
         .setFooter('Feel free to leave some command suggestions or add them yourself!')
         .setColor(0x1ae6b3)
         .setTitle("Prins-Bot Commands")
@@ -77,6 +79,10 @@ bot.on("message", async message => {
         message.channel.send(embed);
     }
     
+
+    if(command === "events") {}
+    if(command === "society") {}
+    if(command === "translate") {}
 
     // Making the bot say something and delete the  users message
     if(command === "say") {
@@ -88,6 +94,25 @@ bot.on("message", async message => {
         message.channel.send(sayMessage);
     }
     
+    // Removes up to 100 messages from users in the channel
+    if(command === "purge") {
+    
+        // Get delete count
+        const deleteCount = parseInt(args[0], 10);
+        
+        // Checking Lenghth
+        if(!deleteCount || deleteCount < 2 || deleteCount > 100)
+        return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
+        
+        // Get messages and delete them
+        const fetched = await message.channel.fetchMessages({limit: deleteCount});
+        message.channel.bulkDelete(fetched)
+        .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
+    }
+
+    if(command === "suggest") {}
+    if(command === "mute") {}
+    if(command === "unmute") {}
 
     // Kick users from server
     if(command === "kick") {
@@ -132,22 +157,6 @@ bot.on("message", async message => {
         message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
     }
 
-    
-    // Removes up to 100 messages from users in the channel
-    if(command === "purge") {
-        
-        // Get delete count
-        const deleteCount = parseInt(args[0], 10);
-        
-        // Checking Lenghth
-        if(!deleteCount || deleteCount < 2 || deleteCount > 100)
-        return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
-        
-        // Get messages and delete them
-        const fetched = await message.channel.fetchMessages({limit: deleteCount});
-        message.channel.bulkDelete(fetched)
-        .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
-    }
 });
 
 bot.login(config.token);
