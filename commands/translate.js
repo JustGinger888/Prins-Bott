@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
-const language = require('./langOptions');
+const language = require('./Translate/langOptions');
 const translate = require('google-translate-api');
-const speech = require('./messages');
+const speech = require('./Translate/messages');
 
 module.exports.run = async (bot, message, args) => {
 
