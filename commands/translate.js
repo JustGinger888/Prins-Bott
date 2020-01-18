@@ -2,10 +2,20 @@ const Discord = require('discord.js');
 const language = require('./Translate/langOptions');
 const translate = require('google-translate-api');
 const speech = require('./Translate/messages');
+const prefix = "!";
 
 module.exports.run = async (bot, message, args) => {
+    //const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
 
-	if (language.some(ele => ele.name === command)) {
+    // It can be a regular ! message. This says to not bother if it doesn't have a prefix, and
+    // to not trigger if a bot gives a command.
+    if (!message.content.startsWith(prefix) || message.author.bot) {
+        return; 
+    }
+
+    // Auto-translates the text into the command's language like !japanese, or !french
+    if (language.some(ele => ele.name === command)) {
         if (args.length === 0) {
             message.reply(speech.BOT_FULLNAME_AUTO_ERROR);
         } else {
@@ -48,9 +58,6 @@ module.exports.run = async (bot, message, args) => {
         }
     }
 
-    if (command === "commands") {
-        message.channel.send(speech.BOT_COMMANDS_HELP);
-    }
   
   };
   
