@@ -1,8 +1,8 @@
-//Requires
+const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
-	// Do Some stuff
+	message.channel.send(sayMessage);
   
   };
   
