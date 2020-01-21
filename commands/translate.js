@@ -63,9 +63,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "translate",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Translation",
+	description: "Translate your message from one language to another",
+	usage: "!translate (from + to + text) || !(language) (text) || !(abrv) (text)",
+	category: "Custom",
 	aliases: [""]
   };

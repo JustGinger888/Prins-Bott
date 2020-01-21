@@ -8,9 +8,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Youtube",
+	description: "Searches Youtube for a desired video",
+	usage: "!youtube (text)",
+	category: "Media",
 	aliases: [""]
   };

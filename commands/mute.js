@@ -54,5 +54,9 @@ module.exports.run = async (bot, message, args) => {
 };
 
 module.exports.help = {
-  name: 'mute'
+  name: 'Mute',
+  description: "Mutes a user on the entire server",
+	usage: "!mute (user)",
+	category: "Admin",
+	aliases: [""]
 };

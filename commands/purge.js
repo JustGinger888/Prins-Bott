@@ -21,9 +21,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "purge",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Purge messages",
+	description: "Deletes a specified number of messages on ",
+	usage: "!purge (x)",
+	category: "Standard",
 	aliases: [""]
   };

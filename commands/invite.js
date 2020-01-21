@@ -14,9 +14,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Invite Link",
+	description: "Generates an invitation link to the server",
+	usage: "!invite",
+	category: "Standard",
 	aliases: [""]
   };

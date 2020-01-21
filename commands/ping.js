@@ -12,9 +12,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "ping",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Ping",
+	description: "Calculates round-trip latency",
+	usage: "!ping",
+	category: "Standard",
 	aliases: [""]
   };

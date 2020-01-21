@@ -31,9 +31,9 @@ module.exports.run = (bot, message, args) => {
 };
 
 module.exports.help = {
-	name: "",
+	name: "Help",
 	aliases: [""],
-	description: "",
-	usgae: "",
-	category: "",
+	description: "Displays all implimented commands",
+	usgae: "!help",
+	category: ""
 };

@@ -27,9 +27,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "kick",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Kick",
+	description: "Kicks a user from the server",
+	usage: "!kick (user)",
+	category: "Admin",
 	aliases: [""]
   };

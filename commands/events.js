@@ -8,9 +8,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Events",
+	description: "Lists all upcoming events found on the SOL Computing page",
+	usage: "!events",
+	category: "Custom",
 	aliases: [""]
   };

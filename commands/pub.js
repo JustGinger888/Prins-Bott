@@ -8,9 +8,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Pub Generator",
+	description: "Generate a random southampton pub to go to based on number inputs",
+	usage: "!pub (x)",
+	category: "Custom",
 	aliases: [""]
   };

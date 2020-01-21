@@ -8,9 +8,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Southampton Weather Forecast",
+	description: "Displays the weather forecasr for Southampton",
+	usage: "!weather",
+	category: "Media",
 	aliases: [""]
   };

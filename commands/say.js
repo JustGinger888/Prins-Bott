@@ -14,9 +14,9 @@ module.exports.run = async (bot, message, args) => {
   
   // Help Object
   module.exports.help = {
-	name: "say",
-	description: "",
-	usage: "",
-	category: "",
+	name: "Bot Say",
+	description: "Make the bot echo any message you want",
+	usage: "!say (text)",
+	category: "Standard",
 	aliases: [""]
   };
