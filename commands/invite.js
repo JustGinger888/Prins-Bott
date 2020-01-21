@@ -1,10 +1,10 @@
-const embed = new Discord.RichEmbed();
+const Discord = require('discord.js');
 
 
 module.exports.run = async (bot, message, args) => {
-
+	const embed = new Discord.RichEmbed();
 	let invite = await message.channel.createInvite({
-		maxAge: 10 * 60 * 1000, //maximum time for the invite, in milliseconds
+		maxAge: 86400, //maximum time for the invite, in milliseconds
 		maxUses: 1 //maximum times it can be used
 	  }, `Requested with command by ${message.author.tag}`).catch(console.log);
 	
