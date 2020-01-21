@@ -1,8 +1,10 @@
 //Requires
 
+
 module.exports.run = async (bot, message, args) => {
 
-	// Do Some stuff
+	
+	message.channel.send();
   
   };
   
