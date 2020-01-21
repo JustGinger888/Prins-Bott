@@ -1,8 +1,14 @@
 const Discord = require('discord.js');
+const embed = new Discord.RichEmbed();
 
 module.exports.run = async (bot, message, args) => {
 
-	message.channel.send(sayMessage);
+	const channel = message.guild.channels.find(ch => ch.name === 'suggestions');  //finds the channel named suggestions 
+        
+    //Sends the arguments to suggestion channel
+    const reply = embed.addField(`Suggestion from ${message.author.tag}\n`, args.join(' ')).setColor(0x1ae6b3);
+    channel.send(reply); 
+    message.delete().catch(vanish_=>{}); 
   
   };
   
