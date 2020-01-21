@@ -65,7 +65,7 @@ module.exports.run = async (bot, message, args) => {
   module.exports.help = {
 	name: "Translation",
 	description: "Translate your message from one language to another",
-	usage: "!translate (from + to + text) || !(language) (text) || !(abrv) (text)",
+	usage: "!translate (from + to + text)\n!(language) (text)\n!(abrv) (text)",
 	category: "Custom",
 	aliases: [""]
   };

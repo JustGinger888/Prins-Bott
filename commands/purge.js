@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
   // Help Object
   module.exports.help = {
 	name: "Purge messages",
-	description: "Deletes a specified number of messages on ",
+	description: "Deletes a specified number of messages on channel",
 	usage: "!purge (x)",
 	category: "Standard",
 	aliases: [""]
