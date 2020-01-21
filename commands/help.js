@@ -46,25 +46,21 @@ module.exports.run = (bot, message, args) => {
         const media = [];
         const custom = [];
         const standard = [];
-        const standardEmbed = new Discord.RichEmbed();
-        const adminEmbed = new Discord.RichEmbed();
-        const customEmbed = new Discord.RichEmbed();
-        const mediaEmbed = new Discord.RichEmbed();
 
         let result = jsfiles.forEach((f, i) => {
             let props = require(`./${f}`);
             let filesArray = [props.help.name, props.help.description, props.help.usage]
             if (props.help.category === 'Standard'){
-                standard.push(`**${filesArray[0]}** \n${filesArray[1]} \n${filesArray[2]}`);
+                standard.push(`**${filesArray[0]}** \n${filesArray[1]} \nUsage: ****${filesArray[2]}****\n`);
             }
             if (props.help.category === 'Admin'){
-                admin.push(`**${filesArray[0]}** \n${filesArray[1]} \n${filesArray[2]}`);
+                admin.push(`**${filesArray[0]}** \n${filesArray[1]} \nUsage: ****${filesArray[2]}****\n`);
             }
             else if (props.help.category === 'Media'){
-                media.push(`**${filesArray[0]}** \n${filesArray[1]} \n${filesArray[2]}`);
+                media.push(`**${filesArray[0]}** \n${filesArray[1]} \nUsage: ****${filesArray[2]}****\n`);
             }
             else if (props.help.category === 'Custom'){
-                custom.push(`**${filesArray[0]}** \n${filesArray[1]} \n${filesArray[2]}\n`);
+                custom.push(`**${filesArray[0]}** \n${filesArray[1]} \nUsage: ****${filesArray[2]}****\n`);
             }
         });
 
@@ -77,7 +73,6 @@ module.exports.run = (bot, message, args) => {
         .setColor(0x1ae6b3)
         .setTitle("Prins-Bot Commands")
         .setURL("https://github.com/JustGinger888/Prins-Bott");
-        
         
         message.channel.send(respone);
 
