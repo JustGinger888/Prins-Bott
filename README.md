@@ -1,9 +1,9 @@
 # Prins-Bott
-### Description
-Solent Computing Discord Servers first bot created by me to help manage and run the server, providing standard, admin and custom commands that can be used by members.
+## Description
+Solent Computing Discord Servers first bot created by me to help manage and run the server, providing standard, admin and custom commands that can be used by members.\
 
-### Command List
-##### Standard Commands:
+## Command List
+### Standard Commands:
 **Invite Link:** 
 Generates an invitation link to the server 
 
@@ -14,10 +14,10 @@ Calculates round-trip latency
 Deletes a specified number of messages on channel 
 
 **Bot Say:** 
-Make the bot echo any message you want 
+Make the bot echo any message you want\
 
 
-##### Admin Commands:
+### Admin Commands:
 **Ban:**
 Bans a user from the server 
 
@@ -28,10 +28,10 @@ Kicks a user from the server
 Mutes a user on the entire server 
 
 **Unmute:** 
-Unmute a user that was previously muted 
+Unmute a user that was previously muted\
 
 
-##### Media Commands:
+### Media Commands:
 **Giphy:**
 Searches Giphy to make your memes not just dreams 
 
@@ -45,10 +45,10 @@ Searches for a words definition on urban dictionary
 Displays the weather forecasr for Southampton 
 
 **Youtube:** 
-Searches Youtube for a desired video 
+Searches Youtube for a desired video\
 
 
-##### Custom Commands:
+### Custom Commands:
 **Events:**
 Lists all upcoming events found on the SOL Computing page 
 
@@ -59,9 +59,9 @@ Generate a random southampton pub to go to based on number inputs
 Displays information for the Computing Society 
 
 **Suggestion:** 
-Make an annonymous suggestion for improvements or events 
+Make an annonymous suggestion for improvements or events\
 
 
-### Special thanks to Users:
+## Special thanks to Users:
 https://github.com/Eritz
 https://gist.github.com/Anish-Shobith
