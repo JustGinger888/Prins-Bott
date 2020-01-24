@@ -4,76 +4,62 @@ Solent Computing Discord Servers first bot created by me to help manage and run 
 
 ### Command List
 ##### Standard Commands:
-**Invite Link** 
+**Invite Link:** 
 Generates an invitation link to the server 
-Usage: !invite
 
-**Ping**
+**Ping:**
 Calculates round-trip latency 
-Usage: !ping
 
-**Purge messages**
+**Purge messages:**
 Deletes a specified number of messages on channel 
-Usage: !purge (x)
 
-**Bot Say** 
+**Bot Say:** 
 Make the bot echo any message you want 
-Usage: !say (text)
+
 
 ##### Admin Commands:
-**Ban**
+**Ban:**
 Bans a user from the server 
-Usage: !ban (user)
 
-**Kick**
+**Kick:**
 Kicks a user from the server 
-Usage: !kick (user)
 
-**Mute**
+**Mute:**
 Mutes a user on the entire server 
-Usage: !mute (user)
 
-**Unmute** 
+**Unmute:** 
 Unmute a user that was previously muted 
-Usage: !unmute (user)
+
 
 ##### Media Commands:
-**Giphy**
+**Giphy:**
 Searches Giphy to make your memes not just dreams 
-Usage: !giphy (text)
 
-**Imgur**
+**Imgur:**
 Searches Imgur for your desired image 
-Usage: !imgur (text)
 
-**Urban Dictionary**
+**Urban Dictionary:**
 Searches for a words definition on urban dictionary 
-Usage: !urban (text)
 
-**Southampton Weather Forecast**
+**Southampton Weather Forecast:**
 Displays the weather forecasr for Southampton 
-Usage: !weather
 
-**Youtube** 
+**Youtube:** 
 Searches Youtube for a desired video 
-Usage: !youtube (text)
+
 
 ##### Custom Commands:
-**Events **
+**Events:**
 Lists all upcoming events found on the SOL Computing page 
-Usage: !events
 
-**Pub Generator**
+**Pub Generator:**
 Generate a random southampton pub to go to based on number inputs 
-Usage: !pub (x)
 
-**Society Information**
+**Society Information:**
 Displays information for the Computing Society 
-Usage: !society
 
-**Suggestion** 
+**Suggestion:** 
 Make an annonymous suggestion for improvements or events 
-Usage: !suggest (message)
 
 
 ### Special thanks to Users:
