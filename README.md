@@ -4,61 +4,61 @@ Solent Computing Discord Servers first bot created by me to help manage and run 
 
 ## Command List
 ### Standard Commands:
-**Invite Link:** 
+* **Invite Link:** 
 Generates an invitation link to the server 
 
-**Ping:**
+* **Ping:**
 Calculates round-trip latency 
 
-**Purge messages:**
+* **Purge messages:**
 Deletes a specified number of messages on channel 
 
-**Bot Say:** 
+* **Bot Say:** 
 Make the bot echo any message you want
 
 
 ### Admin Commands:
-**Ban:**
+* **Ban:**
 Bans a user from the server 
 
-**Kick:**
+* **Kick:**
 Kicks a user from the server 
 
-**Mute:**
+* **Mute:**
 Mutes a user on the entire server 
 
-**Unmute:** 
+* **Unmute:** 
 Unmute a user that was previously muted
 
 
 ### Media Commands:
-**Giphy:**
+* **Giphy:**
 Searches Giphy to make your memes not just dreams 
 
-**Imgur:**
+* **Imgur:**
 Searches Imgur for your desired image 
 
-**Urban Dictionary:**
+* **Urban Dictionary:**
 Searches for a words definition on urban dictionary 
 
-**Southampton Weather Forecast:**
+* **Southampton Weather Forecast:**
 Displays the weather forecasr for Southampton 
 
-**Youtube:** 
+* **Youtube:** 
 Searches Youtube for a desired video
 
 
 ### Custom Commands:
-**Events:**
+* **Events:**
 Lists all upcoming events found on the SOL Computing page 
 
-**Pub Generator:**
+* **Pub Generator:**
 Generate a random southampton pub to go to based on number inputs 
 
-**Society Information:**
+* **Society Information:**
 Displays information for the Computing Society 
 
-**Suggestion:** 
+* **Suggestion:** 
 Make an annonymous suggestion for improvements or events
 
 
