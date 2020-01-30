@@ -39,6 +39,8 @@ module.exports.run = async (bot, message, args) => {
 		"12th	@18:30 - 20:30	\nAgile South Coast Southampton (Southampton)")
 		.setColor(0x1ae6b3);
 
+		message.delete().catch(vanish_=>{}); 
+		
 		if (args.shift() === "feb") 
 		{
 			message.channel.send(febEmbed);

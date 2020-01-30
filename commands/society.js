@@ -11,8 +11,9 @@ module.exports.run = async (bot, message, args) => {
     monthlyPubs : "*To Be Announced*",
     nextHackathon: "Hack The South",
   }
+  message.delete().catch(vanish_=>{}); 
 
-  embed.title('Society Information')
+  embed.setTitle('Society Information')
   .addField('Meeting', society.meetingDay)
   .addField('The Big 3', society.president +'\n'+ society.vicePresident +'\n'+ society.treasurer)
   .addField('Monthly Pub List', society.monthlyPubs)
