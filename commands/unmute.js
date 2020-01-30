@@ -2,6 +2,7 @@ const fs = module.require('fs');
 const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
+  const embed = new Discord.RichEmbed();
   // Check perms, self, rank, etc
   if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(embed.addField(`Error`, 'You do not have Permission to unmute!').setColor(0x1ae6b3));
   const unMute = message.mentions.members.first() || message.guild.members.get(args[0]);
