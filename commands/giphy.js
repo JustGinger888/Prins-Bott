@@ -1,6 +1,7 @@
 const config = require("/Users/ethan/Desktop/Computing Discord Bot/config");
 var GphApiClient = require('giphy-js-sdk-core')
 const client = GphApiClient(config.giphyToken)
+const Discord = require('discord.js');
 
 module.exports.run = async (bot, message, args) => {
 
@@ -18,11 +19,15 @@ module.exports.run = async (bot, message, args) => {
 		var searchPromise = searchForGif(args);
 
 		searchPromise.then((gif) => {
-		  message.channel.send(gif);
+			var arr = gif.split('-');
+		    const embed = new Discord.RichEmbed()
+		    .addField('Giphy', 'Seached for "'+ args+'":')
+		    .setColor(0x1ae6b3)
+			.setImage('http://media.giphy.com/media/'+arr[arr.length - 1]+'/giphy.gif');
+			//message.channel.send(gif);
+		    message.channel.send(embed);
 		})
 
-	//message.channel.send(gif);
-	
   
   };
   
