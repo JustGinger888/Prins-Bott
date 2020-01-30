@@ -35,18 +35,8 @@ Unmute a user that was previously muted
 * **Giphy:**
 Searches Giphy to make your memes not just dreams 
 
-* **Imgur:**
-Searches Imgur for your desired image 
-
-* **Urban Dictionary:**
-Searches for a words definition on urban dictionary 
-
 * **Southampton Weather Forecast:**
 Displays the weather forecasr for Southampton 
-
-* **Youtube:** 
-Searches Youtube for a desired video
-
 
 ### Custom Commands:
 * **Events:**
@@ -60,8 +50,3 @@ Displays information for the Computing Society
 
 * **Suggestion:** 
 Make an annonymous suggestion for improvements or events
-
-
-## Special thanks to Users:
-https://github.com/Eritz
-https://gist.github.com/Anish-Shobith
