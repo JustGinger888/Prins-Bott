@@ -1,9 +1,25 @@
-//Requires
+const Discord = require("discord.js");
+const fetch = require('node-fetch');
+const config = require("/Users/ethan/Desktop/Computing Discord Bot/config");
+const Token = config.weatherToken;
+
 
 module.exports.run = async (bot, message, args) => {
 
-	// Do Some stuff
-  
+	fetch(`https://api.openweathermap.org/data/2.5/weather?q=Southampton&APPID=${Token}`)
+	.then(response => {
+		return response.json()
+	})
+	.then(parsedWeather => {
+		const embed = new Discord.RichEmbed()
+		.addField('Weather Forcast', 
+		'Forecast   : ' +parsedWeather.weather[0].main + '\n'+
+		'Temperature: ' +parsedWeather.main.temp 
+		)
+		.setColor(0x1ae6b3);
+		message.delete().catch(vanish_=>{}); 
+		message.channel.send(embed);
+	})
   };
   
   // Help Object
