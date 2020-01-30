@@ -1,8 +1,28 @@
-//Requires
+const config = require("/Users/ethan/Desktop/Computing Discord Bot/config");
+var GphApiClient = require('giphy-js-sdk-core')
+const client = GphApiClient(config.giphyToken)
 
 module.exports.run = async (bot, message, args) => {
 
-	// Do Some stuff
+	const searchForGif = (gifName) => {
+		return client.search('gifs', {"q": gifName, "limit": 10})
+			   .then((response) => {
+				 var gif = response.data[Math.floor(Math.random() * 10)].url;
+				 return gif;
+			   })
+			   .catch((err) => {
+				 return err;
+			   })
+	  }
+
+		var searchPromise = searchForGif(args);
+
+		searchPromise.then((gif) => {
+		  message.channel.send(gif);
+		})
+
+	//message.channel.send(gif);
+	
   
   };
   
