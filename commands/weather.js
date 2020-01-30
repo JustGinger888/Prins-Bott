@@ -12,7 +12,7 @@ module.exports.run = async (bot, message, args) => {
 	})
 	.then(parsedWeather => {
 		const embed = new Discord.RichEmbed()
-		.addField('Weather Forcast', 
+		.addField('Weather', 
 		'Forecast    : ' +parsedWeather.weather[0].main + '\n'+
 		'Low Temp: ' +Math.round((parsedWeather.main.temp_min -273.15)) + '°C' + '\n'+
 		'High Temp: ' +Math.round((parsedWeather.main.temp_max -273.15)) + '°C' + '\n'+
