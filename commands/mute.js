@@ -1,9 +1,10 @@
 const fs = module.require('fs');
 
 module.exports.run = async (bot, message, args) => {
+  const embed = new Discord.RichEmbed();
   // Check perms, self, rank, etc
   if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You do not have Permission to mute!');
-  const toMute = message.mentions.members.first() || message.guild.members.get(args[0]);
+  const toMute = message.mentions.members.first()
   if (!toMute) return message.channel.send('You did not specify a user mention or ID!');
   if (toMute.id === message.author.id) return message.channel.send('You can not mute yourself!');
   if (toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send('You can not mute a member that is equal to or higher than yourself!');
@@ -15,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
   if (!mutedRole) {
     try {
       // Create a role called "Muted"
-      mutedRole = await message.guild.createRole({
+      mutedRole = message.guild.createRole({
         name: 'Muted',
         color: '#000000',
         permissions: []
@@ -38,14 +39,9 @@ module.exports.run = async (bot, message, args) => {
 
   // TODO: Check they they have entered a valid number or even entered one
 
-  // Check current time and add muted time to it, then convert to seconds from milliseconds
-  bot.muted[toMute.id] = {
-    guild: message.guild.id,
-    time: Date.now() + parseInt(args[1]) * 1000
-  };
 
   // Add the mentioned user to the "mutedRole" and notify command sender
-  await toMute.addRole(mutedRole);
+  toMute.addRole(mutedRole);
 
   fs.writeFile('./muted.json', JSON.stringify(bot.muted, null, 4), err => {
     if (err) throw err;

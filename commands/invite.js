@@ -8,7 +8,9 @@ module.exports.run = async (bot, message, args) => {
 		maxUses: 1 //maximum times it can be used
 	  }, `Requested with command by ${message.author.tag}`).catch(console.log);
 	
-	  message.reply(embed.addField("Here's your invite:", invite).setColor(0x1ae6b3));
+	  message.delete().catch(vanish_=>{}); 
+	  
+	  message.channel.send(embed.addField("Here's your invite:", invite).setColor(0x1ae6b3));
   
   };
   
