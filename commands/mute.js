@@ -1,13 +1,15 @@
 const fs = module.require('fs');
+const Discord = require('discord.js');
+
 
 module.exports.run = async (bot, message, args) => {
   const embed = new Discord.RichEmbed();
   // Check perms, self, rank, etc
-  if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You do not have Permission to mute!');
+  if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send(embed.addField(`Error`, 'You do not have Permission to mute!').setColor(0x1ae6b3));
   const toMute = message.mentions.members.first()
-  if (!toMute) return message.channel.send('You did not specify a user mention or ID!');
-  if (toMute.id === message.author.id) return message.channel.send('You can not mute yourself!');
-  if (toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send('You can not mute a member that is equal to or higher than yourself!');
+  if (!toMute) return message.channel.send(embed.addField(`Error`, 'You did not specify a user mention or ID!').setColor(0x1ae6b3));
+  if (toMute.id === message.author.id) return message.channel.send(embed.addField(`Error`, 'You can not mute yourself!').setColor(0x1ae6b3));
+  if (toMute.highestRole.position >= message.member.highestRole.position) return message.channel.send(embed.addField(`Error`, 'You can not mute a member that is equal to or higher than yourself!').setColor(0x1ae6b3));
 
   // Check if the user has the mutedRole
   const mutedRole = message.guild.roles.find(mR => mR.name === 'Muted');
@@ -35,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
   }
 
   // If the mentioned user already has the "mutedRole" then that can not be muted again
-  if (toMute.roles.has(mutedRole.id)) return message.channel.send('This user is already muted!');
+  if (toMute.roles.has(mutedRole.id)) return message.channel.send(embed.addField(`Error`, 'This user is already muted!').setColor(0x1ae6b3));
 
   // TODO: Check they they have entered a valid number or even entered one
 
@@ -45,7 +47,7 @@ module.exports.run = async (bot, message, args) => {
 
   fs.writeFile('./muted.json', JSON.stringify(bot.muted, null, 4), err => {
     if (err) throw err;
-    message.channel.send(`I have muted ${toMute.user.tag}!`);
+    message.channel.send(embed.addField(`Success`, `I have muted ${toMute.user.tag}!`).setColor(0x1ae6b3));
   });
 };
 
