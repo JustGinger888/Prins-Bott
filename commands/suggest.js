@@ -1,3 +1,4 @@
+const Discord = require('discord.js');
 //Requires
 
 module.exports.run = async (bot, message, args) => {
